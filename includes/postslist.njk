@@ -1,9 +1,13 @@
+{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
+{%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
+
 {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
 <ol reversed class="postlist">
 {% for post in postslist | reverse %}
 	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
 		<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
 	</li>
+	{{ post.content | safe }}
 {% endfor %}
 </ol>

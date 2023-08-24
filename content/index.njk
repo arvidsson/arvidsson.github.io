@@ -1,28 +1,26 @@
 ---
+permalink: "index/{% if pagination.pageNumber != 0 %}/page-{{ pagination.pageNumber + 1 }}/{% endif %}"
 layout: layouts/home.njk
-eleventyNavigation:
-  key: Home
-  order: 1
-numberOfLatestPostsToShow: 5
+pagination:
+  data: collections.posts
+  size: 5
+  alias: posts
 ---
-{% set postsCount = collections.posts | length %}
-{% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
-<h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
 
-{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
-{% set postslistCounter = postsCount %}
-{% include "postslist.njk" %}
+{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
+{%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
 
-{% set morePosts = postsCount - numberOfLatestPostsToShow %}
-{% if morePosts > 0 %}
-<p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="/blog/">the archive</a>.</p>
+{% for post in pagination.items %}
+	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+		<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+	</li>
+	{{ post.content | safe }}
+{% endfor %}
+
+{% if pagination.href.previous %}
+  <a href="{{pagination.href.previous}}">Previous</a>
 {% endif %}
-
-{# List every content page in the project #}
-{#
-<ul>
-	{%- for entry in collections.all %}
-	<li><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></li>
-	{%- endfor %}
-</ul>
-#}
+{% if pagination.href.next %}
+  <a href="{{pagination.href.next}}">Next</a>
+{% endif %}

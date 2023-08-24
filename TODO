@@ -1,1 +1,4 @@
-https://dev.to/psypher1/lets-learn-11ty-part-7-adding-tailwind-5cdh
+home: paginate all posts, newest first
+notes: list of all notes, newest first
+tags: list of all tags and a count of matching notes?
+about: describe what this is and who I am briefly

@@ -3,33 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>arvidsson&#39;s blog</title>
-		<meta name="description" content="Blog posts about programming.">
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="arvidsson&#39;s blog">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="arvidsson&#39;s blog">
-		
-		<style>* { box-sizing: border-box; }
-/* Defaults */
-:root {
-  --font-family: -apple-system, system-ui, sans-serif;
-  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
-    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
-    Courier, monospace;
+		<title>arvidsson&#39;s notes</title>
+		<meta name="description" content="random notes on programming mostly">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="arvidsson&#39;s notes">
+		<link rel="alternate" href="/feed/feed.json" type="application/json" title="arvidsson&#39;s notes">
+		<meta name="generator" content="Eleventy v2.0.1">
+		<style>:root {
+  --font-family: serif;
+  --font-family-monospace: monospace;
 }
 
-/* Theme colors */
 :root {
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
-  --color-gray-90: #333;
+  --color-gray-90: #000;
 
   --background-color: #fff;
 
   --text-color: var(--color-gray-90);
-  --text-color-link: #082840;
-  --text-color-link-active: #5f2b48;
-  --text-color-link-visited: #17050f;
+  --text-color-link: blue;
+  --text-color-link-active: purple;
+  --text-color-link-visited: purple;
 
   --syntax-tab-size: 2;
 }
@@ -38,10 +32,9 @@
   :root {
     --color-gray-20: #e0e0e0;
     --color-gray-50: #c0c0c0;
-    --color-gray-90: #dad8d8;
+    --color-gray-90: #fff;
 
-    /* --text-color is assigned to --color-gray-_ above */
-    --text-color-link: #dad8d8;
+    --text-color-link: #0000ff;
     --text-color-link-active: #dad8d8;
     --text-color-link-visited: #dad8d8;
 
@@ -49,7 +42,6 @@
   }
 }
 
-/* Global stylesheet */
 * {
   box-sizing: border-box;
 }
@@ -69,7 +61,6 @@ body {
   max-width: 60em;
 }
 
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -85,6 +76,8 @@ p:last-child {
 }
 p {
   line-height: 1.5;
+  max-width: 80ch;
+  font-size: 1.1em;
 }
 
 li {
@@ -110,7 +103,6 @@ main :first-child {
 }
 
 header {
-  /* border-bottom: 1px dashed var(--color-gray-20); */
 }
 header:after {
   content: "";
@@ -138,7 +130,7 @@ code {
 }
 pre:not([class*="language-"]) {
   margin: 0.5em 0;
-  line-height: 1.375; /* 22px /16 */
+  line-height: 1.375;
   -moz-tab-size: var(--syntax-tab-size);
   -o-tab-size: var(--syntax-tab-size);
   tab-size: var(--syntax-tab-size);
@@ -155,7 +147,6 @@ code {
   word-break: break-all;
 }
 
-/* Header */
 header {
   display: flex;
   gap: 1em 0.5em;
@@ -163,16 +154,7 @@ header {
   align-items: center;
   padding: 1em;
 }
-.home-link {
-  font-size: 1em; /* 16px /16 */
-  font-weight: 700;
-  margin-right: 2em;
-}
-.home-link:link:not(:hover) {
-  text-decoration: none;
-}
 
-/* Nav */
 .nav {
   display: flex;
   padding: 0;
@@ -185,12 +167,15 @@ header {
 }
 .nav-item a[href]:not(:hover) {
   text-decoration: none;
+  color: blue;
+}
+.nav-item a:hover {
+  color: blue;
 }
 .nav a[href][aria-current="page"] {
   text-decoration: underline;
 }
 
-/* Posts list */
 .postlist {
   list-style: none;
   padding: 0;
@@ -204,14 +189,14 @@ header {
 }
 .postlist-date,
 .postlist-item:before {
-  font-size: 0.8125em; /* 13px /16 */
+  font-size: 0.8125em;
   color: var(--color-gray-90);
 }
 .postlist-date {
   word-spacing: -0.5px;
 }
 .postlist-link {
-  font-size: 1.1875em; /* 19px /16 */
+  font-size: 1.1875em;
   font-weight: 700;
   flex-basis: calc(100% - 1.5rem);
   padding-right: 0.5em;
@@ -223,7 +208,6 @@ header {
   font-weight: bold;
 }
 
-/* Tags */
 .post-tag {
   display: inline-flex;
   align-items: center;
@@ -234,7 +218,6 @@ header {
   align-self: center;
 }
 
-/* Tags list */
 .post-metadata {
   display: inline-flex;
   flex-wrap: wrap;
@@ -247,7 +230,6 @@ header {
   margin-right: 1em;
 }
 
-/* Direct Links / Markdown Headers */
 .header-anchor {
   text-decoration: none;
   font-style: normal;
@@ -269,20 +251,36 @@ a[href].header-anchor:focus,
 
 h2 + .header-anchor {
   font-size: 1.5em;
+}
+
+.home-link {
+  font-size: 1em;
+  font-weight: 700;
+  margin-right: 2em;
+  color: blue;
+}
+
+a[href].home-link:visited {
+  color: black;
+}
+
+.home-link:link:not(:hover) {
+  text-decoration: none;
+  color: blue;
 }</style>
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">arvidsson&#39;s blog</a>
+			<a href="/" class="home-link">arvidsson&#39;s notes</a>
+
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
-					<li class="nav-item"><a href="/">Home</a></li>
-					<li class="nav-item"><a href="/blog/">Blog</a></li>
+					<li class="nav-item"><a href="/notes/">Notes</a></li>
 					<li class="nav-item"><a href="/tags/" aria-current="page">Tags</a></li>
-					<li class="nav-item"><a href="/about/">About Me</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -311,7 +309,5 @@ h2 + .header-anchor {
 		</main>
 
 		<footer></footer>
-
-		<!-- Current page: /tags/ -->
 	</body>
 </html>

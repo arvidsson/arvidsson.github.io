@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:base="en">
-	<title>arvidsson&#39;s blog</title>
-	<subtitle>Blog posts about programming.</subtitle>
+	<title>arvidsson&#39;s notes</title>
+	<subtitle>random notes on programming mostly</subtitle>
 	<link href="https://arvidsson.github.io/feed/feed.xml" rel="self"/>
 	<link href="https://arvidsson.github.io/"/>
 	<updated>2023-08-24T00:00:00Z</updated>
@@ -13,13 +13,14 @@
 	
 	<entry>
 		<title>Singletons in Unity</title>
-		<link href="https://arvidsson.github.io/blog/simple-singleton/"/>
+		<link href="https://arvidsson.github.io/notes/simple-singleton/"/>
 		<updated>2023-08-24T00:00:00Z</updated>
-		<id>https://arvidsson.github.io/blog/simple-singleton/</id>
-		<content type="html">&lt;p&gt;This is an easy way to make a singleton object in Unity. I won&#39;t go into the pros and cons of Singletons, but I have found it a good pattern to use in game programming when you want to easily access objects that should only really exist as a single instance and where you often need access from many other objects, such as manager objects or the single player object.&lt;/p&gt;
+		<id>https://arvidsson.github.io/notes/simple-singleton/</id>
+		<content type="html">&lt;p&gt;This is an easy way to make a singleton object in Unity.&lt;/p&gt;
+&lt;p&gt;I won&#39;t go into the pros and cons of Singletons in general and the discussion around if it&#39;s an antipattern or not. I have found it a good pattern to use in game programming when you want to easily access objects that should only really exist as a single instance and where you often need access from many other objects, such as manager objects (eg save system, sound system) or the object representing the player.&lt;/p&gt;
 &lt;pre class=&quot;language-csharp&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Singleton&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token type-list&quot;&gt;&lt;span class=&quot;token class-name&quot;&gt;MonoBehaviour&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token return-type class-name&quot;&gt;Singleton&lt;/span&gt; Instance &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token return-type class-name&quot;&gt;Singleton&lt;/span&gt; Instance &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
     &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token return-type class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Awake&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -40,9 +41,9 @@
 	
 	<entry>
 		<title>Shuffle list extension</title>
-		<link href="https://arvidsson.github.io/blog/shuffle-list-extension/"/>
+		<link href="https://arvidsson.github.io/notes/shuffle-list-extension/"/>
 		<updated>2023-08-23T00:00:00Z</updated>
-		<id>https://arvidsson.github.io/blog/shuffle-list-extension/</id>
+		<id>https://arvidsson.github.io/notes/shuffle-list-extension/</id>
 		<content type="html">&lt;p&gt;Shuffle list.&lt;/p&gt;
 &lt;pre class=&quot;language-csharp&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Collections&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Generic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
@@ -68,9 +69,9 @@
 	
 	<entry>
 		<title>A simple resource manager</title>
-		<link href="https://arvidsson.github.io/blog/a-simple-resource-manager/"/>
+		<link href="https://arvidsson.github.io/notes/a-simple-resource-manager/"/>
 		<updated>2023-08-23T00:00:00Z</updated>
-		<id>https://arvidsson.github.io/blog/a-simple-resource-manager/</id>
+		<id>https://arvidsson.github.io/notes/a-simple-resource-manager/</id>
 		<content type="html">&lt;p&gt;A simple way to dynamically load resources in Unity.&lt;/p&gt;
 &lt;pre class=&quot;language-csharp&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Collections&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Generic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;UnityEngine&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;

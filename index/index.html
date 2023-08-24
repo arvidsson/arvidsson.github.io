@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>A simple resource manager</title>
-		<meta name="description" content="Blog posts about programming.">
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="arvidsson&#39;s blog">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="arvidsson&#39;s blog">
-		
+		<title>arvidsson&#39;s notes</title>
+		<meta name="description" content="random notes on programming mostly">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="arvidsson&#39;s notes">
+		<link rel="alternate" href="/feed/feed.json" type="application/json" title="arvidsson&#39;s notes">
+		<meta name="generator" content="Eleventy v2.0.1">
 		<style>/**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
@@ -176,28 +176,22 @@ pre[class*="language-diff-"] {
 	text-decoration: none; /* override del, ins, mark defaults */
 	color: inherit; /* override del, ins, mark defaults */
 }
-* { box-sizing: border-box; }
-/* Defaults */
 :root {
-  --font-family: -apple-system, system-ui, sans-serif;
-  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
-    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
-    Courier, monospace;
+  --font-family: serif;
+  --font-family-monospace: monospace;
 }
 
-/* Theme colors */
 :root {
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
-  --color-gray-90: #333;
+  --color-gray-90: #000;
 
   --background-color: #fff;
 
   --text-color: var(--color-gray-90);
-  --text-color-link: #082840;
-  --text-color-link-active: #5f2b48;
-  --text-color-link-visited: #17050f;
+  --text-color-link: blue;
+  --text-color-link-active: purple;
+  --text-color-link-visited: purple;
 
   --syntax-tab-size: 2;
 }
@@ -206,10 +200,9 @@ pre[class*="language-diff-"] {
   :root {
     --color-gray-20: #e0e0e0;
     --color-gray-50: #c0c0c0;
-    --color-gray-90: #dad8d8;
+    --color-gray-90: #fff;
 
-    /* --text-color is assigned to --color-gray-_ above */
-    --text-color-link: #dad8d8;
+    --text-color-link: #0000ff;
     --text-color-link-active: #dad8d8;
     --text-color-link-visited: #dad8d8;
 
@@ -217,7 +210,6 @@ pre[class*="language-diff-"] {
   }
 }
 
-/* Global stylesheet */
 * {
   box-sizing: border-box;
 }
@@ -237,7 +229,6 @@ body {
   max-width: 60em;
 }
 
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -253,6 +244,8 @@ p:last-child {
 }
 p {
   line-height: 1.5;
+  max-width: 80ch;
+  font-size: 1.1em;
 }
 
 li {
@@ -278,7 +271,6 @@ main :first-child {
 }
 
 header {
-  /* border-bottom: 1px dashed var(--color-gray-20); */
 }
 header:after {
   content: "";
@@ -306,7 +298,7 @@ code {
 }
 pre:not([class*="language-"]) {
   margin: 0.5em 0;
-  line-height: 1.375; /* 22px /16 */
+  line-height: 1.375;
   -moz-tab-size: var(--syntax-tab-size);
   -o-tab-size: var(--syntax-tab-size);
   tab-size: var(--syntax-tab-size);
@@ -323,7 +315,6 @@ code {
   word-break: break-all;
 }
 
-/* Header */
 header {
   display: flex;
   gap: 1em 0.5em;
@@ -331,16 +322,7 @@ header {
   align-items: center;
   padding: 1em;
 }
-.home-link {
-  font-size: 1em; /* 16px /16 */
-  font-weight: 700;
-  margin-right: 2em;
-}
-.home-link:link:not(:hover) {
-  text-decoration: none;
-}
 
-/* Nav */
 .nav {
   display: flex;
   padding: 0;
@@ -353,12 +335,15 @@ header {
 }
 .nav-item a[href]:not(:hover) {
   text-decoration: none;
+  color: blue;
+}
+.nav-item a:hover {
+  color: blue;
 }
 .nav a[href][aria-current="page"] {
   text-decoration: underline;
 }
 
-/* Posts list */
 .postlist {
   list-style: none;
   padding: 0;
@@ -372,14 +357,14 @@ header {
 }
 .postlist-date,
 .postlist-item:before {
-  font-size: 0.8125em; /* 13px /16 */
+  font-size: 0.8125em;
   color: var(--color-gray-90);
 }
 .postlist-date {
   word-spacing: -0.5px;
 }
 .postlist-link {
-  font-size: 1.1875em; /* 19px /16 */
+  font-size: 1.1875em;
   font-weight: 700;
   flex-basis: calc(100% - 1.5rem);
   padding-right: 0.5em;
@@ -391,7 +376,6 @@ header {
   font-weight: bold;
 }
 
-/* Tags */
 .post-tag {
   display: inline-flex;
   align-items: center;
@@ -402,7 +386,6 @@ header {
   align-self: center;
 }
 
-/* Tags list */
 .post-metadata {
   display: inline-flex;
   flex-wrap: wrap;
@@ -415,7 +398,6 @@ header {
   margin-right: 1em;
 }
 
-/* Direct Links / Markdown Headers */
 .header-anchor {
   text-decoration: none;
   font-style: normal;
@@ -437,20 +419,36 @@ a[href].header-anchor:focus,
 
 h2 + .header-anchor {
   font-size: 1.5em;
+}
+
+.home-link {
+  font-size: 1em;
+  font-weight: 700;
+  margin-right: 2em;
+  color: blue;
+}
+
+a[href].home-link:visited {
+  color: black;
+}
+
+.home-link:link:not(:hover) {
+  text-decoration: none;
+  color: blue;
 }</style>
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">arvidsson&#39;s blog</a>
+			<a href="/" class="home-link">arvidsson&#39;s notes</a>
+
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
-					<li class="nav-item"><a href="/">Home</a></li>
-					<li class="nav-item"><a href="/blog/">Blog</a></li>
+					<li class="nav-item"><a href="/notes/">Notes</a></li>
 					<li class="nav-item"><a href="/tags/">Tags</a></li>
-					<li class="nav-item"><a href="/about/">About Me</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -458,16 +456,13 @@ h2 + .header-anchor {
 		<main id="skip">
 			
 
-<h1>A simple resource manager</h1>
 
-<ul class="post-metadata">
-	<li><time datetime="2023-08-23">23 August 2023</time></li>
-	<li><a href="/tags/unity/" class="post-tag">unity</a>, </li>
-	<li><a href="/tags/gamedev/" class="post-tag">gamedev</a>, </li>
-	<li><a href="/tags/c/" class="post-tag">c#</a></li>
-</ul>
 
-<p>A simple way to dynamically load resources in Unity.</p>
+	<li class="postlist-item">
+		<a href="/notes/a-simple-resource-manager/" class="postlist-link">A simple resource manager</a>
+		<time class="postlist-date" datetime="2023-08-23">23 August 2023</time>
+	</li>
+	<p>A simple way to dynamically load resources in Unity.</p>
 <pre class="language-csharp" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
 <span class="token keyword">using</span> <span class="token namespace">UnityEngine</span><span class="token punctuation">;</span>
 
@@ -502,12 +497,65 @@ h2 + .header-anchor {
 <span class="token punctuation">}</span></code></pre>
 
 
+	<li class="postlist-item">
+		<a href="/notes/shuffle-list-extension/" class="postlist-link">Shuffle list extension</a>
+		<time class="postlist-date" datetime="2023-08-23">23 August 2023</time>
+	</li>
+	<p>Shuffle list.</p>
+<pre class="language-csharp" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">ListExtensions</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token generic-method"><span class="token function">Shuffle</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token class-name">IList<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> list<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> n <span class="token operator">=</span> list<span class="token punctuation">.</span>Count<span class="token punctuation">;</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> rng <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">System<span class="token punctuation">.</span>Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            n<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> k <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">T</span> <span class="token keyword">value</span> <span class="token operator">=</span> list<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            list<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            list<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+
+	<li class="postlist-item">
+		<a href="/notes/simple-singleton/" class="postlist-link">Singletons in Unity</a>
+		<time class="postlist-date" datetime="2023-08-24">24 August 2023</time>
+	</li>
+	<p>This is an easy way to make a singleton object in Unity.</p>
+<p>I won't go into the pros and cons of Singletons in general and the discussion around if it's an antipattern or not. I have found it a good pattern to use in game programming when you want to easily access objects that should only really exist as a single instance and where you often need access from many other objects, such as manager objects (eg save system, sound system) or the object representing the player.</p>
+<pre class="language-csharp" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">MonoBehaviour</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name">Singleton</span> Instance <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Awake</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>Instance <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> Instance <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">Destroy</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        Instance <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// keep singleton alive between scenes</span>
+        <span class="token function">DontDestroyOnLoad</span><span class="token punctuation">(</span>gameObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+
+
+
+
 
 
 		</main>
 
 		<footer></footer>
-
-		<!-- Current page: /blog/a-simple-resource-manager/ -->
 	</body>
 </html>

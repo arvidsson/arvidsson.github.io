@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>A simple resource manager</title>
+		<title>Tagged “patterns”</title>
 		<meta name="description" content="Blog posts about programming.">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="arvidsson&#39;s blog">
 		<link rel="alternate" href="/feed/feed.json" type="application/json" title="arvidsson&#39;s blog">
@@ -176,6 +176,7 @@ pre[class*="language-diff-"] {
 	text-decoration: none; /* override del, ins, mark defaults */
 	color: inherit; /* override del, ins, mark defaults */
 }
+.postlist { counter-reset: start-from 2 }
 * { box-sizing: border-box; }
 /* Defaults */
 :root {
@@ -457,57 +458,47 @@ h2 + .header-anchor {
 
 		<main id="skip">
 			
+<h1>tagged “patterns”</h1>
 
-<h1>A simple resource manager</h1>
 
-<ul class="post-metadata">
-	<li><time datetime="2023-08-23">23 August 2023</time></li>
-	<li><a href="/tags/unity/" class="post-tag">unity</a>, </li>
-	<li><a href="/tags/gamedev/" class="post-tag">gamedev</a>, </li>
-	<li><a href="/tags/c/" class="post-tag">c#</a></li>
-</ul>
 
-<p>A simple way to dynamically load resources in Unity.</p>
-<pre class="language-csharp" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
-<span class="token keyword">using</span> <span class="token namespace">UnityEngine</span><span class="token punctuation">;</span>
+<ol reversed class="postlist">
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ResourceManager</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">MonoBehaviour</span></span>
+	<li class="postlist-item">
+		<a href="/blog/simple-singleton/" class="postlist-link">Singletons in Unity</a>
+		<time class="postlist-date" datetime="2023-08-24">24 August 2023</time>
+	</li>
+	<p>This is an easy way to make a singleton object in Unity. I won't go into the pros and cons of Singletons, but I have found it a good pattern to use in game programming when you want to easily access objects that should only really exist as a single instance and where you often need access from many other objects, such as manager objects or the single player object.</p>
+<pre class="language-csharp" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">MonoBehaviour</span></span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name">Dictionary<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> Sprite<span class="token punctuation">></span></span> Sprites <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name">Dictionary<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> AudioClip<span class="token punctuation">></span></span> Sounds <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name">Singleton</span> Instance <span class="token punctuation">{</span><span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Load</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Awake</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token function">LoadSprites</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">LoadSounds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">LoadSprites</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token class-name"><span class="token keyword">var</span></span> sprites <span class="token operator">=</span> Resources<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">LoadAll</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>Sprite<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token string">"Sprites/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">var</span></span> sprite <span class="token keyword">in</span> sprites<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>Instance <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> Instance <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
-            Sprites<span class="token punctuation">[</span>sprite<span class="token punctuation">.</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> sprite<span class="token punctuation">;</span>
+            <span class="token function">Destroy</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
 
-    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">LoadSounds</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token class-name"><span class="token keyword">var</span></span> sounds <span class="token operator">=</span> Resources<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">LoadAll</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>AudioClip<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token string">"Sounds/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">var</span></span> sound <span class="token keyword">in</span> sounds<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Sounds<span class="token punctuation">[</span>sound<span class="token punctuation">.</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> sound<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        Instance <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// keep singleton alive between scenes</span>
+        <span class="token function">DontDestroyOnLoad</span><span class="token punctuation">(</span>gameObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 
 
+</ol>
+
+
+<p>See <a href="/tags/">all tags</a>.</p>
 
 
 		</main>
 
 		<footer></footer>
 
-		<!-- Current page: /blog/a-simple-resource-manager/ -->
+		<!-- Current page: /tags/patterns/ -->
 	</body>
 </html>

@@ -41,11 +41,11 @@
     --color-gray-90: #dad8d8;
 
     /* --text-color is assigned to --color-gray-_ above */
-    --text-color-link: #1493fb;
-    --text-color-link-active: #6969f7;
-    --text-color-link-visited: #a6a6f8;
+    --text-color-link: #dad8d8;
+    --text-color-link-active: #dad8d8;
+    --text-color-link-visited: #dad8d8;
 
-    --background-color: #15202b;
+    --background-color: #272822;
   }
 }
 
@@ -56,8 +56,8 @@
 
 html,
 body {
+  margin: 0;
   padding: 0;
-  /* margin: 0 auto; */
   font-family: var(--font-family);
   color: var(--text-color);
   background-color: var(--background-color);
@@ -110,7 +110,7 @@ main :first-child {
 }
 
 header {
-  border-bottom: 1px dashed var(--color-gray-20);
+  /* border-bottom: 1px dashed var(--color-gray-20); */
 }
 header:after {
   content: "";
@@ -289,18 +289,7 @@ h2 + .header-anchor {
 
 		<main id="skip">
 			
-<h1 id="content-not-found" tabindex="-1">Content not found. <a class="header-anchor" href="#content-not-found">#</a></h1>
-<p>Go <a href="/">home</a>.</p>
-<!--
-
-Read more: https://www.11ty.dev/docs/quicktips/not-found/
-
-This will work for both GitHub pages and Netlify:
-
-* https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/
-* https://www.netlify.com/docs/redirects/#custom-404
-
--->
+<h1 id="404-not-found" tabindex="-1">404 Not Found <a class="header-anchor" href="#404-not-found">#</a></h1>
 
 
 		</main>

@@ -5,4 +5,4 @@ eleventyNavigation:
   order: 3
 ---
 
-WIP.
+Notes about stuff I want to remember and that might be useful to others.

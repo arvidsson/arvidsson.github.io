@@ -3,6 +3,7 @@ title: Shuffle list extension
 date: 2023-08-23
 tags:
   - c#
+draft: true
 ---
 
 Shuffle list.

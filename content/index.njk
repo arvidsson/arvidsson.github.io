@@ -1,26 +1,23 @@
 ---
-permalink: "index/{% if pagination.pageNumber != 0 %}/page-{{ pagination.pageNumber + 1 }}/{% endif %}"
 layout: layouts/home.njk
-pagination:
-  data: collections.posts
-  size: 5
-  alias: posts
+eleventyNavigation:
+  key: Notes
+  order: 1
 ---
 
-{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
-{%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
+{% set postslist = collections.posts %}
 
-{% for post in pagination.items %}
+<ol reversed class="postlist">
+{% for post in postslist | reverse %}
 	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
 		<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
 		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-	</li>
-	{{ post.content | safe }}
-{% endfor %}
 
-{% if pagination.href.previous %}
-  <a href="{{pagination.href.previous}}">Previous</a>
-{% endif %}
-{% if pagination.href.next %}
-  <a href="{{pagination.href.next}}">Next</a>
-{% endif %}
+    {%- for tag in post.data.tags | filterTagList %}
+    {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+    <div><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</div>
+    {%- endfor %}
+
+	</li>
+{% endfor %}
+</ol>

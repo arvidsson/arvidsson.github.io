@@ -9,5 +9,6 @@
 		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
 	</li>
 	{{ post.content | safe }}
+
 {% endfor %}
 </ol>

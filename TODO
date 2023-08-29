@@ -2,3 +2,5 @@ home: paginate all posts, newest first
 notes: list of all notes, newest first
 tags: list of all tags and a count of matching notes?
 about: describe what this is and who I am briefly
+
+draft: only show posts that are not drafts

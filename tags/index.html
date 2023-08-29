@@ -61,6 +61,14 @@ body {
   max-width: 60em;
 }
 
+ul {
+  padding-left: 1em;
+}
+
+h2 {
+  margin-bottom: 0em;
+}
+
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -112,7 +120,6 @@ header:after {
 
 .links-nextprev {
   list-style: none;
-  border-top: 1px dashed var(--color-gray-20);
   padding: 1em 0;
 }
 
@@ -186,23 +193,26 @@ header {
   align-items: baseline;
   counter-increment: start-from -1;
   margin-bottom: 1em;
+  gap: 0em 0.5em;
 }
 .postlist-date,
 .postlist-item:before {
-  font-size: 0.8125em;
   color: var(--color-gray-90);
 }
 .postlist-date {
   word-spacing: -0.5px;
+  padding-right: 1em;
 }
 .postlist-link {
-  font-size: 1.1875em;
+  font-size: 1.5em;
+  display: block;
   font-weight: 700;
   flex-basis: calc(100% - 1.5rem);
   padding-right: 0.5em;
   text-underline-position: from-font;
   text-underline-offset: 0;
   text-decoration-thickness: 1px;
+  margin-bottom: 0;
 }
 .postlist-item-active .postlist-link {
   font-weight: bold;
@@ -249,6 +259,10 @@ a[href].header-anchor:focus,
   color: #aaa;
 }
 
+h1 {
+  margin-bottom: 0;
+}
+
 h2 + .header-anchor {
   font-size: 1.5em;
 }
@@ -278,7 +292,7 @@ a[href].home-link:visited {
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
-					<li class="nav-item"><a href="/notes/">Notes</a></li>
+					<li class="nav-item"><a href="/">Notes</a></li>
 					<li class="nav-item"><a href="/tags/" aria-current="page">Tags</a></li>
 					<li class="nav-item"><a href="/about/">About</a></li>
 				</ul>
@@ -292,13 +306,10 @@ a[href].home-link:visited {
 <ul>
 
 	
-	<li><a href="/tags/unity/" class="post-tag">unity</a></li>
-
-	
-	<li><a href="/tags/gamedev/" class="post-tag">gamedev</a></li>
-
-	
 	<li><a href="/tags/c/" class="post-tag">c#</a></li>
+
+	
+	<li><a href="/tags/unity/" class="post-tag">unity</a></li>
 
 	
 	<li><a href="/tags/patterns/" class="post-tag">patterns</a></li>

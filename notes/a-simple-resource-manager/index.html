@@ -218,15 +218,20 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-family);
+  font-family: serif;
   color: var(--text-color);
   background-color: var(--background-color);
 }
+
 html {
   overflow-y: scroll;
 }
+
 body {
-  max-width: 60em;
+  max-width: 800px;
+  font-size: 18px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
 ul {
@@ -251,10 +256,11 @@ h1 {
 p:last-child {
   margin-bottom: 0;
 }
+
 p {
   line-height: 1.5;
   max-width: 80ch;
-  font-size: 1.1em;
+  font-size: 20px;
 }
 
 li {
@@ -343,13 +349,18 @@ header {
 }
 .nav-item a[href]:not(:hover) {
   text-decoration: none;
-  color: blue;
+  color: black;
 }
 .nav-item a:hover {
-  color: blue;
+  color: black;
 }
 .nav a[href][aria-current="page"] {
   text-decoration: underline;
+  font-weight: bold;
+}
+
+code[class*="language-"] {
+  font-size: 14px;
 }
 
 .postlist {
@@ -452,8 +463,6 @@ a[href].home-link:visited {
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">arvidsson&#39;s notes</a>
-
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">

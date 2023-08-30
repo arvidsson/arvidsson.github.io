@@ -4,6 +4,8 @@ date: 2023-08-30
 tags:
   - c#
   - unity
+  - gamedev
+  - patterns
 ---
 
 [Object pooling](https://en.wikipedia.org/wiki/Object_pool_pattern) in Unity. Useful when creating and destroying a lot of game objects to avoid burdening the CPU.

@@ -52,11 +52,12 @@ body {
 }
 
 ul {
-  padding-left: 1em;
+  padding-left: 1.5em;
 }
 
-h2 {
-  margin-bottom: 0em;
+h1 {
+  margin-bottom: 0;
+  line-height: 1.5;
 }
 
 .visually-hidden {
@@ -247,10 +248,6 @@ a[href].header-anchor:hover {
 a[href].header-anchor:focus,
 :hover > a[href].header-anchor {
   color: #aaa;
-}
-
-h1 {
-  margin-bottom: 0;
 }
 
 h2 + .header-anchor {

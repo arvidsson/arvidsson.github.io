@@ -5,6 +5,7 @@ tags:
   - c#
   - unity
   - patterns
+  - gamedev
 ---
 
 This is an easy way to make a singleton object in Unity.

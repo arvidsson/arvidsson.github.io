@@ -1,12 +1,11 @@
 ---
-title: Shuffle list extension
+title: Shuffle list
 date: 2023-08-23
 tags:
   - c#
-draft: true
 ---
 
-Shuffle list.
+An extension to List to shuffle it with a method based on the [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) shuffle algorithm.
 
 ```csharp
 using System.Collections.Generic;

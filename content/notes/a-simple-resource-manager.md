@@ -5,10 +5,9 @@ tags:
   - unity
   - gamedev
   - c#
-draft: true
 ---
 
-A simple way to dynamically load resources in Unity.
+A simple way to dynamically load resources in Unity. Note that `Resources.LoadAll` will load all resources of the same type within the folders and subfolders.
 
 ```csharp
 using System.Collections.Generic;

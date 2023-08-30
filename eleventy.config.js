@@ -98,6 +98,12 @@ module.exports = function (eleventyConfig) {
       level: [1, 2, 3, 4],
       slugify: eleventyConfig.getFilter("slugify"),
     });
+    mdLib.renderer.rules.code_inline = (tokens, idx, { langPrefix = "" }) => {
+      const token = tokens[idx];
+      return `<code class="${langPrefix}">${mdLib.utils.escapeHtml(
+        token.content
+      )}</code>`;
+    };
   });
 
   // Features to make your build faster (when you need them)

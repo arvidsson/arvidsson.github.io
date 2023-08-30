@@ -104,6 +104,24 @@
 	</entry>
 	
 	<entry>
+		<title>Game Design Template</title>
+		<link href="https://arvidsson.github.io/notes/game-design-template/"/>
+		<updated>2023-08-27T00:00:00Z</updated>
+		<id>https://arvidsson.github.io/notes/game-design-template/</id>
+		<content type="html">&lt;p&gt;A simple template to summarize a game idea and its core elements.&lt;/p&gt;
+&lt;h2 id=&quot;elevator-pitch&quot; tabindex=&quot;-1&quot;&gt;Elevator pitch &lt;a class=&quot;header-anchor&quot; href=&quot;https://arvidsson.github.io/notes/game-design-template/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Describe the idea in a single paragraph.&lt;/p&gt;
+&lt;h2 id=&quot;core-game-mechanics&quot; tabindex=&quot;-1&quot;&gt;Core Game Mechanics &lt;a class=&quot;header-anchor&quot; href=&quot;https://arvidsson.github.io/notes/game-design-template/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Describe each core game mechanic in a single or few paragraphs.&lt;/p&gt;
+&lt;h2 id=&quot;start-middle-and-end&quot; tabindex=&quot;-1&quot;&gt;Start, Middle and End &lt;a class=&quot;header-anchor&quot; href=&quot;https://arvidsson.github.io/notes/game-design-template/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Describe what the player is focusing on in each of these phases.&lt;/p&gt;
+&lt;h2 id=&quot;how-to-win-and-lose&quot; tabindex=&quot;-1&quot;&gt;How to Win and Lose &lt;a class=&quot;header-anchor&quot; href=&quot;https://arvidsson.github.io/notes/game-design-template/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Descibe how the player can win but also lose in the game.&lt;/p&gt;
+&lt;p&gt;All of these combined should give a good enough picture of what the core game design is, and what is most important to focus on when prototyping the game idea.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
 		<title>Singletons in Unity</title>
 		<link href="https://arvidsson.github.io/notes/simple-singleton/"/>
 		<updated>2023-08-24T00:00:00Z</updated>

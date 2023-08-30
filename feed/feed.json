@@ -19,6 +19,14 @@
 		}
 		,
 		{
+			"id": "https://arvidsson.github.io/notes/game-design-template/",
+			"url": "https://arvidsson.github.io/notes/game-design-template/",
+			"title": "Game Design Template",
+			"content_html": "<p>A simple template to summarize a game idea and its core elements.</p>\n<h2 id=\"elevator-pitch\" tabindex=\"-1\">Elevator pitch <a class=\"header-anchor\" href=\"https://arvidsson.github.io/notes/game-design-template/\">#</a></h2>\n<p>Describe the idea in a single paragraph.</p>\n<h2 id=\"core-game-mechanics\" tabindex=\"-1\">Core Game Mechanics <a class=\"header-anchor\" href=\"https://arvidsson.github.io/notes/game-design-template/\">#</a></h2>\n<p>Describe each core game mechanic in a single or few paragraphs.</p>\n<h2 id=\"start-middle-and-end\" tabindex=\"-1\">Start, Middle and End <a class=\"header-anchor\" href=\"https://arvidsson.github.io/notes/game-design-template/\">#</a></h2>\n<p>Describe what the player is focusing on in each of these phases.</p>\n<h2 id=\"how-to-win-and-lose\" tabindex=\"-1\">How to Win and Lose <a class=\"header-anchor\" href=\"https://arvidsson.github.io/notes/game-design-template/\">#</a></h2>\n<p>Descibe how the player can win but also lose in the game.</p>\n<p>All of these combined should give a good enough picture of what the core game design is, and what is most important to focus on when prototyping the game idea.</p>\n",
+			"date_published": "2023-08-27T00:00:00Z"
+		}
+		,
+		{
 			"id": "https://arvidsson.github.io/notes/simple-singleton/",
 			"url": "https://arvidsson.github.io/notes/simple-singleton/",
 			"title": "Singletons in Unity",

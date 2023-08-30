@@ -3,12 +3,180 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>arvidsson&#39;s notes</title>
+		<title>Game Design Template</title>
 		<meta name="description" content="random notes on programming mostly">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="arvidsson&#39;s notes">
 		<link rel="alternate" href="/feed/feed.json" type="application/json" title="arvidsson&#39;s notes">
 		<meta name="generator" content="Eleventy v2.0.1">
-		<style>:root {
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+:root {
   --font-family: serif;
   --font-family-monospace: monospace;
 }
@@ -291,13 +459,35 @@ a[href].home-link:visited {
 				<ul class="nav">
 					<li class="nav-item"><a href="/">Notes</a></li>
 					<li class="nav-item"><a href="/tags/">Tags</a></li>
-					<li class="nav-item"><a href="/about/" aria-current="page">About</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
 				</ul>
 			</nav>
 		</header>
 
 		<main id="skip">
-			<p>Notes about stuff I want to remember and that might be useful to others.</p>
+			
+
+<h1>Game Design Template</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2023-08-27">27 August 2023</time></li>
+	<li><a href="/tags/game-design/" class="post-tag">game design</a></li>
+</ul>
+
+<p>A simple template to summarize a game idea and its core elements.</p>
+<h2 id="elevator-pitch" tabindex="-1">Elevator pitch <a class="header-anchor" href="#elevator-pitch">#</a></h2>
+<p>Describe the idea in a single paragraph.</p>
+<h2 id="core-game-mechanics" tabindex="-1">Core Game Mechanics <a class="header-anchor" href="#core-game-mechanics">#</a></h2>
+<p>Describe each core game mechanic in a single or few paragraphs.</p>
+<h2 id="start-middle-and-end" tabindex="-1">Start, Middle and End <a class="header-anchor" href="#start-middle-and-end">#</a></h2>
+<p>Describe what the player is focusing on in each of these phases.</p>
+<h2 id="how-to-win-and-lose" tabindex="-1">How to Win and Lose <a class="header-anchor" href="#how-to-win-and-lose">#</a></h2>
+<p>Descibe how the player can win but also lose in the game.</p>
+<p>All of these combined should give a good enough picture of what the core game design is, and what is most important to focus on when prototyping the game idea.</p>
+
+<ul class="links-nextprev"><li>Previous: <a href="/notes/simple-singleton/">Singletons in Unity</a></li><li>Next: <a href="/notes/gameobject-pool/">GameObject Pool</a></li>
+</ul>
+
 
 		</main>
 

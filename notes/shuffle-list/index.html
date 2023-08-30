@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Singletons in Unity</title>
+		<title>Shuffle list</title>
 		<meta name="description" content="random notes on programming mostly">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="arvidsson&#39;s notes">
 		<link rel="alternate" href="/feed/feed.json" type="application/json" title="arvidsson&#39;s notes">
@@ -470,37 +470,35 @@ a[href].home-link:visited {
 		<main id="skip">
 			
 
-<h2>Singletons in Unity</h2>
+<h2>Shuffle list</h2>
 
 <ul class="post-metadata">
-	<li><time datetime="2023-08-24">24 August 2023</time></li>
-	<li><a href="/tags/c/" class="post-tag">c#</a>, </li>
-	<li><a href="/tags/unity/" class="post-tag">unity</a>, </li>
-	<li><a href="/tags/patterns/" class="post-tag">patterns</a></li>
+	<li><time datetime="2023-08-23">23 August 2023</time></li>
+	<li><a href="/tags/c/" class="post-tag">c#</a></li>
 </ul>
 
-<p>This is an easy way to make a singleton object in Unity.</p>
-<p>I won't go into the pros and cons of Singletons in general and the discussion around if it's an antipattern or not. I have found it a good pattern to use in game programming when you want to easily access objects that should only really exist as a single instance and where you often need access from many other objects, such as manager objects (eg save system, sound system) or the object representing the player.</p>
-<pre class="language-csharp" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">MonoBehaviour</span></span>
+<p>An extension to List to shuffle it with a method based on the <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates</a> shuffle algorithm.</p>
+<pre class="language-csharp" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">ListExtensions</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name">Singleton</span> Instance <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Awake</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token generic-method"><span class="token function">Shuffle</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token class-name">IList<span class="token punctuation">&lt;</span>T<span class="token punctuation">></span></span> list<span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>Instance <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> Instance <span class="token operator">!=</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> n <span class="token operator">=</span> list<span class="token punctuation">.</span>Count<span class="token punctuation">;</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> rng <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">System<span class="token punctuation">.</span>Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
-            <span class="token function">Destroy</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
+            n<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> k <span class="token operator">=</span> rng<span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">T</span> <span class="token keyword">value</span> <span class="token operator">=</span> list<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            list<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            list<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-
-        Instance <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// keep singleton alive between scenes</span>
-        <span class="token function">DontDestroyOnLoad</span><span class="token punctuation">(</span>gameObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 
-<ul class="links-nextprev"><li>Previous: <a href="/notes/shuffle-list/">Shuffle list</a></li><li>Next: <a href="/notes/gameobject-pool/">GameObject Pool</a></li>
+<ul class="links-nextprev"><li>Previous: <a href="/notes/a-simple-resource-manager/">A simple resource manager</a></li><li>Next: <a href="/notes/simple-singleton/">Singletons in Unity</a></li>
 </ul>
 
 
